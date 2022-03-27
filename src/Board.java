@@ -1,7 +1,15 @@
+/** This class represents a Board object
+ *
+ * @author Ammaar Shaikh
+ */
+
 public class Board {
 
+    /** The 2d Array of Piece with 6 rows and 7 columns which is the board*/
     private Piece[][] theBoard = new Piece[6][7];
 
+    /** Instantiates a Board object
+     */
     public Board() {
         for (int row = 0; row < theBoard.length; row++) {
             for (int col = 0; col < theBoard[0].length; col++) {
@@ -10,6 +18,8 @@ public class Board {
         }
     }
 
+    /** Prints the Board in the console
+     */
     public void printBoard(){
         for (Piece[] row : theBoard){
             System.out.print("\033[1;37m"+"|");
@@ -26,6 +36,12 @@ public class Board {
         }
     }
 
+    /** Places a specific piece into the Board
+     *
+     * @param column The number of the column where the piece will go
+     * @param color The type of piece that will go there i.e. red or yellow
+     * @return True if the piece was successfully, false if not
+     */
     public boolean placePiece(int column, String color){
         boolean pieceAdded = false;
         if (column > 0 && column < 8){
@@ -58,6 +74,11 @@ public class Board {
         return pieceAdded;
     }
 
+    /** Checks to see if the Board is completely filled with Pieces
+     * by checking to see if none of the Pieces are null
+     *
+     * @return true if the Board is filled, false if not
+     */
     public boolean isBoardFilled(){
         for (Piece[] row : theBoard){
             for (Piece col : row){
@@ -69,6 +90,13 @@ public class Board {
         return true;
     }
 
+    /** Checks to see if a specific player has gotten 4 in a row
+     * and has won the game
+     *
+     * @param place The position of the Piece that it will check from
+     * @param color The specific color of the Piece, it will determine who won
+     * @return true if there are 4 of the same colored Pieces in a row, false if not
+     */
     public boolean checkForWinner(int place, String color){
         boolean hasWon = false;
 
